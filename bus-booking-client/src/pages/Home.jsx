@@ -1,24 +1,34 @@
-import SearchForm from '../components/SearchForm'
+import HeroSection from '../components/home/HeroSection'
+import SectionCard from '../components/home/SectionCard'
 
 export default function Home() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-white via-white to-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-8">
-              Get Your Ticket Online,<br />Easy and Safely
-            </h2>
-            <button className="bg-primary text-white px-8 py-3 rounded-md font-semibold hover:bg-primary/90 transition">
-              GET TICKET NOW
-            </button>
-          </div>
+    <>
+      <HeroSection />
+      {
+        [
+        {
+          Option:'Payment Options',
+          title:'Multiple Payment Options'
+        },
+        {
+          Option:'',
+          title:'Why Book with BusSeat?'
+        },
+        ].map((info, index) => {
           
-          <div>
-            <SearchForm />
-          </div>
-        </div>
-      </div>
-    </div>
+        })
+      }
+      <SectionCard 
+        Option='Payment Options'
+        title='Multiple Payment Options'
+        key={1}
+      />
+      <SectionCard 
+        Option=''
+        title='Why Book with BusSeat?'
+        key={2}
+      />
+    </>
   )
 }

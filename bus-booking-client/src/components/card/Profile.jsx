@@ -22,8 +22,7 @@ export default function Profile() {
                   </svg>
                 </span>
                 <span className="text-xs text-white">
-                  <b>Set Clear Goals</b> <br />
-                  Define your objectives and create actionable steps to reach them.
+                  <b>{info.title}</b> <br />{info.description}
                 </span>
               </li>
             ))

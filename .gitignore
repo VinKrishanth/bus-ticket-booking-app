@@ -9,6 +9,7 @@ bus-booking-server/.env
 
 
 *.txt
+*.drawio
 # Logs
 logs/
 *.log

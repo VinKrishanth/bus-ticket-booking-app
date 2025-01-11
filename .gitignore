@@ -1,8 +1,11 @@
 # Ignore node_modules in bus-booking-client
 bus-booking-client/node_modules/
+bus-booking-server/node_modules/
 
 # Ignore .env files
 bus-booking-client/src/.env
+bus-booking-server/src/.env
+bus-booking-server/.env
 
 
 *.txt

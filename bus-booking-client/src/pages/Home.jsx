@@ -1,10 +1,12 @@
-import HeroSection from '../components/home/HeroSection'
+import HeroSectionDefault from '../components/home/HeroSectionDefault'
 import SectionCard from '../components/home/SectionCard'
+import { useSelector } from 'react-redux';
 
 export default function Home() {
+  const mobileOpen = useSelector(state => state.theme.isMobileOpen);
   return (
-    <>
-      <HeroSection />
+    <div className={`flex flex-col ${mobileOpen && 'hidden'}`}>
+      <HeroSectionDefault />
       {
         [
         {
@@ -16,19 +18,15 @@ export default function Home() {
           title:'Why Book with BusSeat?'
         },
         ].map((info, index) => {
-          
+          return(
+            <SectionCard 
+            Option={info.Option}
+            title={info.title}
+            key={`${index}`}
+          />
+          )
         })
       }
-      <SectionCard 
-        Option='Payment Options'
-        title='Multiple Payment Options'
-        key={1}
-      />
-      <SectionCard 
-        Option=''
-        title='Why Book with BusSeat?'
-        key={2}
-      />
-    </>
+    </div>
   )
 }

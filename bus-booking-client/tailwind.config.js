@@ -48,6 +48,8 @@ export default {
     }
     },
     backgroundImage: {
+      'gradient-blue': 'radial-gradient(100% 100% at 50% 50%, rgba(30,167,253,0) 0%, #1ea7fd 100%)',
+      'gradient-purple': 'radial-gradient(100% 100% at 50% 50%, rgba(111,44,172,0) 0%, #6f2cac 100%)',
     },
     transform: {
     },

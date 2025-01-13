@@ -7,7 +7,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const mobileOpen = useSelector(state => state.theme.isMobileOpen);
   return (
-    <div className={`min-h-screen bg-[#f8f5ff] flex flex-col ${mobileOpen && 'hidden'}`}>
+    <div className={`min-h-screen bg-[#f8f5ff] flex flex-col ${mobileOpen && 'hidden'} `}>
       <main className="flex-1 flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
           <h1 className="text-3xl font-bold mb-2">Sign in</h1>

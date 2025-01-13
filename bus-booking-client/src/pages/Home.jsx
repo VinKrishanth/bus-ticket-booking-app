@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 export default function Home() {
   const mobileOpen = useSelector(state => state.theme.isMobileOpen);
   return (
-    <div className={`flex flex-col ${mobileOpen && 'hidden'}`}>
+    <div className={`flex flex-col ${mobileOpen && 'hidden'} pt-16`}>
       <HeroSectionDefault />
       {
         [

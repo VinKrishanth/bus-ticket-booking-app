@@ -5,7 +5,7 @@ const themeSlice = createSlice({
   initialState: { lightTheme: true, isMobileOpen: false , textHover: true},
   reducers: {
     toggleTheme(state) {
-      state.lightTheme = !state.lightTheme;
+      state.lightTheme = state.lightTheme;
     },
     mobileOpen(state) {
       state.isMobileOpen =!state.isMobileOpen;

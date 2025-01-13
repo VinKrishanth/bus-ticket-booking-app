@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home , Navbar, Booking, Dashboard, Login, SearchBuses, Register } from '../utils/index.js';
+import Footer from '../components/footer/Footer.jsx';
+
 
 export default function Layout() {
   return (
@@ -14,6 +16,7 @@ export default function Layout() {
             <Route path="/bus-booking/dashboard" element={<Dashboard />} />
             <Route path="/bus-booking/search-buses" element={<SearchBuses />} />
         </Routes>
+        <Footer />
       </Router>
   )
 }

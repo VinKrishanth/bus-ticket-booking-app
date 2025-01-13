@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import connectDB from './config/mongodb.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import authRouters from './routes/authRoutes.js';
+import homeRoutes from "./routes/home.js";
 
 dotenv.config();
 const app = express();
@@ -14,6 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ credentials: true }));
 
-// API endpoint
+app.use("/", homeRoutes);
+app.use('/api/auth', authRouters);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

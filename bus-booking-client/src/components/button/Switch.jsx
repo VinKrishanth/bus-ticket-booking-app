@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleThemeAction } from '../../redux/theme-slice';
-import { FiSun, FiMoon } from "react-icons/fi";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 export default function Switch({
   customerStyle
@@ -20,7 +20,7 @@ export default function Switch({
         className={`p-2 px-4 rounded-full ${buttonClick ? 'text-gray-500 ' : 'text-gray-400 '}`}
       >
         {
-          buttonClick ? <FiMoon className={`w-6 h-6 scale-125 `} /> : <FiSun className={`w-6 h-6 scale-125`} />
+          buttonClick ? <MdDarkMode className={`w-6 h-6 scale-125 `} /> : <MdLightMode className={`w-6 h-6 scale-125`} />
         }
         
       </button>

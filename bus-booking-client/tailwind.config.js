@@ -9,6 +9,7 @@ export default {
       colors: {
         primary: '#0D8A4F',
         secondary: '#8FD3B5',
+        tertiary: '#f2802f',
       },
       fontFamily: {
         'body': [
@@ -57,8 +58,12 @@ export default {
     },
     keyframes: {
     },
+    clipPath: {
+      triangle: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+    },
   },
   plugins: [
+    require('tailwind-clip-path'),
   ],
 }
 

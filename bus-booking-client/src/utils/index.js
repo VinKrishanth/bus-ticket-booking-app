@@ -17,6 +17,7 @@ export { default as Ticket } from '../assets/images/ticket-96.png';
 export { default as VisaCard } from '../assets/images/visacard-96.png';
 export { default as LogoSource } from '../assets/images/qTechy-logo-1.png';
 export { default as MobileNavigateSource } from '../assets/images/qTechy-nav-source.png';
+export { default as QTechyBusDemo } from '../assets/images/qTechy-bus-demo.png';
 
 
 export const NavigationLinks = [

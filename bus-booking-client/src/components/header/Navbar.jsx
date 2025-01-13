@@ -12,11 +12,10 @@ export default function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false); 
   const Theme = useSelector(state => state.theme.lightTheme);
-  const mobileOpen = useSelector(state => state.theme.isMobileOpen);
+
   const dispatch = useDispatch();
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    dispatch(toggleThemeAction.mobileOpen());
   };
 
 
@@ -42,7 +41,6 @@ export default function Navbar() {
                       <Link 
                         key={`${navigation.ID}${index}`}
                         to={navigation.URL}
-                        onClick={toggleMenu}
                       >
                         <li
                           className={`block py-2 px-3 ${ location.pathname === navigation.URL ?  (Theme ? 'text-white bg-blue-700 md:text-blue-700 ' : 'text-white md:text-blue-500 bg-blue-700') : (Theme ? 'text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700 md:hover:bg-transparent md:border-0 ' : 'md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent text-white md:border-0 ') } rounded md:bg-transparent  md:p-0 `}

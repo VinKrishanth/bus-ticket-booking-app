@@ -5,3 +5,16 @@
 .custom-z-index {
     z-index: 100; 
 }
+
+.customer-text-xl {
+    font-size: 11px;
+}
+.customer-text-lg {
+    font-size: 10px;
+}
+.customer-text-md {
+    font-size: 9px;
+}
+.customer-text-sm {
+    font-size: 8px;
+}

@@ -3,14 +3,19 @@ import { QTechyBusDemo } from '../../utils/index.js'
 import { SearchBusDemo } from '../../utils/SearchBusDemo.js'
 import TextCard from './TextCard.jsx';
 import { IoIosInformationCircle } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 export default function BusBookingCard() {
+    const navigation = useNavigate();
     const [moreInfo, setMoreInfo] = useState(false) ; 
 
     const toggleMoreInfo = () => {
         setMoreInfo(!moreInfo)
     }
 
+    const handleClick = () => {
+        navigation('/bus-booking/booking');
+    }
   return (
     <div className={`flex flex-col min-w-screen justify-items-start border-2 min-h-52 rounded-xl`}>
         <div className={`flex justify-between bg-blue-500 rounded-t-xl py-2 px-6 border-b-8 border-tertiary text-white`}>
@@ -58,7 +63,12 @@ export default function BusBookingCard() {
                 </div>
                 <div className={`flex justify-between min-w-full items-center p-4 sm:flex-row flex-col gap-4`}>
                     <h1 className={`text-base tracking-wider font-normal cursor-pointer`}>Duration: <span className={`font-semibold text-lg`}>{SearchBusDemo[0].duration} Hours</span></h1>
-                    <button className={`text-base tracking-wider cursor-pointer bg-tertiary text-white px-8 py-2 rounded-xl bg-opacity-75 hover:bg-opacity-100`}>Book Now</button>
+                    <button
+                     onClick={handleClick}
+                     className={`text-base tracking-wider cursor-pointer bg-tertiary text-white px-8 py-2 rounded-xl bg-opacity-75 hover:bg-opacity-100`}
+                    >
+                        Book Now
+                    </button>
                 </div>
             </div>
         </main>

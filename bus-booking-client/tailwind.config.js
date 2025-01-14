@@ -53,10 +53,17 @@ export default {
       'gradient-purple': 'radial-gradient(100% 100% at 50% 50%, rgba(111,44,172,0) 0%, #6f2cac 100%)',
     },
     transform: {
+
     },
     animation: {
+      '3d-scale': 'scale3d 3s ease-in-out infinite',
     },
     keyframes: {
+      scale3d: {
+        '0%': { transform: 'scale(1)' },
+        '50%': { transform: 'scale(0.8)' },
+        '100%': { transform: 'scale(1)' },
+      },
     },
     clipPath: {
       triangle: 'polygon(50% 0%, 0% 100%, 100% 100%)',

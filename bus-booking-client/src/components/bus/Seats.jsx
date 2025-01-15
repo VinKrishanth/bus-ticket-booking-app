@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 
 export default function Seats({count, type , index, space}) {
-  const [ textHover, setTextHover ] = useState(false);
+  const [ bookingType, setBookingType ] = useState({
+    type: '',
+    count: '',
+  });
 
   const customerStyles = {
     Available : 'be-white',
@@ -11,16 +14,26 @@ export default function Seats({count, type , index, space}) {
   }
 
   const handleBookingSeats = (count, type) => {
+    type === 'available'   && setBookingType({
+      type: 'booking',
+      count: count,
+    }) 
+
+    bookingType.type === 'booking' &&  setBookingType({
+      type: 'available',
+      count: count,
+    })
+
     console.log(`count - ${count} : ${type}`);
   }
 
   return (
     <ul 
-      className={`flex justify-start items-start p-2 relative   sm:rotate-0 rotate-90 ${space && 'sm:ml-14 mt-8'}`}
+      className={`flex justify-start items-start p-2 relative   sm:rotate-0 rotate-90 ${space && 'sm:ml-14 sm:mt-0 mt-8'}`}
       key={index}
       onClick={()=>handleBookingSeats(count, type)}
     >
-        <li className={`flex justify-center items-center sm:h-7 sm:w-7 w-4 h-4 rounded-l border-[1px] border-r-0 border-black ${type === 'counter' && 'bg-tertiary cursor-not-allowed'} ${type === 'Available' && 'bg-white cursor-pointer '}  `}>
+        <li className={`flex justify-center items-center sm:h-7 sm:w-7 w-4 h-4 rounded-l border-[1px] border-r-0 border-black ${type === 'counter' && 'bg-tertiary cursor-not-allowed'} ${type === 'Available' && 'bg-white cursor-pointer '} ${bookingType.type === 'booking' && 'bg-primary'}   `}>
             <h2 className={`sm:text-xs customer-text-sm tracking-wide font-semibold sm:rotate-0 -rotate-90`}>{count}</h2>
         </li>
         <li className={`sm:h-7 h-4 sm:w-2 w-1 border-[1px] border-l-0 rounded-r border-black bg-white`}></li>

@@ -31,11 +31,11 @@ export default function BusLayout() {
     ]
 
   return (
-    <div className={`flex justify-start items-start p-8 sm:min-w-fit min-w-full sm:flex-row flex-col`}>
-        <div className={`flex justify-center items-center w-10 h-10 border-2 my-3 mx-2 rounded-full bg-black`}>
-
+    <div className={`flex sm:justify-start justify-center items-start sm:p-8 sm:min-w-fit min-w-full sm:flex-row flex-col`}>
+        <div className={`flex justify-center items-center  my-3 mx-2 sm:min-w-fit min-w-full`}>
+            <div className={`w-10 h-10 border-2 rounded-full sm:-translate-x-1 translate-x-16`}></div>
         </div>
-        <div className={`flex sm:flex-col flex-row-reverse justify-start items-start`}>
+        <div className={`flex sm:flex-col flex-row-reverse sm:justify-start justify-center sm:min-w-fit min-w-full items-start`}>
             {
                 SeatColumnInfo.map((info, index) => {
                     return(

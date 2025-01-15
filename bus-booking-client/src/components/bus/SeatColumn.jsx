@@ -4,7 +4,7 @@ import Seats from './Seats'
 
 export default function SeatColumn( { arr = [] , customerStyle}) {
     return (
-        <div className={`flex flex-col sm:flex-row  ${customerStyle ? 'justify-end sm:min-w-full min-h-full' : 'justify-center'}  items-center  sm:gap-1 `}>
+        <div className={`flex flex-col sm:flex-row  ${customerStyle ? 'justify-end sm:min-w-full sm:min-h-fit min-h-96 sm:translate-y-0 -translate-y-8' : 'justify-center'}  items-center  sm:gap-1 `}>
             {
                 arr.map((seat, index) => {
                     return(

@@ -4,6 +4,7 @@ export { default as Dashboard } from '../pages/Dashboard';
 export { default as Login } from '../pages/Login';
 export { default as Register } from '../pages/Register';
 export { default as SearchBuses } from '../pages/SearchBuses';
+export { default as BookingProceed } from '../pages/BookingProceed';
 export { default as Navbar } from '../components/header/Navbar';
 
 export { default as AmericaCard } from '../assets/images/amexcard-96.png';

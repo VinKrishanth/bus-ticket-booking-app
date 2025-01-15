@@ -1,8 +1,13 @@
 import React from 'react'
 import { BusSeatInfo } from '../utils/Bus.js'
 import SeatColumn from '../components/bus/SeatColumn.jsx'
+import { useNavigate } from 'react-router-dom'
 
 export default function BusLayout() {
+    const navigate = useNavigate();
+    const handleClick = () => { 
+        navigate('/bus-booking/booking-process');
+    }
     const SeatColumnInfo = [
         {
             Info: BusSeatInfo[0].column1,
@@ -35,7 +40,7 @@ export default function BusLayout() {
         <div className={`flex justify-center items-center  my-3 mx-2 sm:min-w-fit min-w-full`}>
             <div className={`w-10 h-10 border-2 rounded-full sm:-translate-x-1 translate-x-16`}></div>
         </div>
-        <div className={`flex sm:flex-col flex-row-reverse sm:justify-start justify-center sm:min-w-fit min-w-full items-start`}>
+        <div className={`flex sm:flex-col flex-row-reverse sm:justify-start justify-center sm:min-w-fit min-w-full items-start sm:scale-100 scale-125 sm:translate-y-0 translate-y-12`}>
             {
                 SeatColumnInfo.map((info, index) => {
                     return(
@@ -49,8 +54,21 @@ export default function BusLayout() {
             }
 
             <div className={`min-w-full justify-end items-center py-8 sm:flex hidden`}>
-                <button className={`bg-primary text-white py-2 px-4 rounded-md text-sm font-semibold tracking-wide cursor-pointer`}>Proceed</button>
+                <button 
+                    onClick={()=>handleClick()} 
+                    className={`bg-primary text-white py-2 px-4 rounded-md text-sm font-semibold tracking-wide cursor-pointer`}
+                >
+                    Proceed
+                </button>
             </div>
+        </div>
+        <div className={`min-w-full justify-end items-center flex sm:hidden mt-20 px-8`}>
+            <button 
+                onClick={()=>handleClick()} 
+                className={`bg-primary text-white py-1 px-2 rounded-md text-sm font-semibold tracking-wide cursor-pointer`}
+            >
+                Proceed
+            </button>
         </div>
     </div>
   )

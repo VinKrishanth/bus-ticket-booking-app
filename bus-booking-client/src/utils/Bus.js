@@ -251,3 +251,43 @@ export const BusSeatInfo = [
         ]
     }
 ]
+
+
+export const BookingTitles = [
+    {
+        TitleInfo1 : [
+            {
+              title : 'Depature',
+              desc: 'Colombo'
+            },
+            {
+              title : 'Arrival',
+              desc: 'Jaffna',
+              type: true
+            },
+        ],
+        TitleInfo2 : [
+            {
+              title : 'Date',
+              desc: '2025-01-12'
+            },
+            {
+              title : 'Date',
+              desc: '2025-01-13',
+              type: true
+            },
+        ],
+        TitleInfo3 : [
+            {
+              title : 'Time',
+              desc: '18:00'
+            },
+            {
+              title : 'Time',
+              desc: '04:00',
+              type: true
+              
+            },
+        ],
+    }
+]

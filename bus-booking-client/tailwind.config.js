@@ -57,6 +57,7 @@ export default {
     },
     animation: {
       '3d-scale': 'scale3d 3s ease-in-out infinite',
+      expandCircle: "circleExpand 0.3s ease-in-out forwards",
     },
     keyframes: {
       scale3d: {
@@ -67,6 +68,10 @@ export default {
     },
     clipPath: {
       triangle: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+      circleExpand: {
+        "0%": { transform: "translate(-150%, -50%) scale(1)", borderRadius: "50%" },
+        "100%": { transform: "translate(100%, -50%) scale(1.5)", borderRadius: "0%" },
+      },
     },
   },
   plugins: [

@@ -10,6 +10,7 @@ export default function BookingForm() {
         nic_number: '',
         email: '',
     });
+    
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');

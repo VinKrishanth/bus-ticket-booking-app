@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { FaCalendarAlt, FaMapMarkerAlt, FaBus, FaQuestionCircle, FaExchangeAlt } from 'react-icons/fa';
+import {  FaMapMarkerAlt, FaBus, FaQuestionCircle, FaExchangeAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import {  useSelector } from 'react-redux';
+import DateInput from '../input/DateInput';
 
 export default function HeroSectionDefault() {
+    const current = new Date();
     const [departureStation, setDepartureStation] = useState('');
     const [arrivalStation, setArrivalStation] = useState('');
-    const [journeyDate, setJourneyDate] = useState('');
+    const [journeyDate, setJourneyDate] = useState(current.toISOString().split('T')[0]);
     const [stations, setStations] = useState([]);
     const [filteredDepartureStations, setFilteredDepartureStations] = useState([]);
     const [filteredArrivalStations, setFilteredArrivalStations] = useState([]);
     const navigation = useNavigate();
     const Theme = useSelector(state => state.theme.lightTheme);
+    const [errors, setErrors] = useState({});
+
 
     useEffect(() => {
         const fetchStations = async () => {
-            const mockStations = ['Colombo', 'Galle', 'Kandy', 'Jaffna', 'Anuradhapura', 'Trincomalee'];
+            const mockStations = ['Colombo', 'Galle', 'Kandy', 'Jaffna', 'Anuradhapura', 'Trincomalee','ColomboA', 'GalleA', 'KandyA', 'JaffnaA', 'AnuradhapuraA', 'TrincomaleeA'];
             setStations(mockStations);
         };
         fetchStations();
@@ -32,8 +36,25 @@ export default function HeroSectionDefault() {
         }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        let formErrors = {};
+        if (!journeyDate) {
+            formErrors.journeyDate = true;
+        }
+        if (!arrivalStation) {
+            formErrors.arrivalStation = true;
+        }
+        if (!departureStation) {
+            formErrors.departureStation = true;
+        }
+
+        if (Object.keys(formErrors).length > 0) {
+            setErrors(formErrors);
+            return;
+        }
+
         console.log({ departureStation, arrivalStation, journeyDate });
         navigation(`/bus-booking/search-buses`);
     };
@@ -76,15 +97,16 @@ export default function HeroSectionDefault() {
                                 <input
                                     type="text"
                                     placeholder="Enter departure station"
-                                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                    className={`${errors.departureStation &&  "border-red-500"} w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:outline-none focus:outline-none `}
                                     value={departureStation}
                                     onChange={(e) => {
                                         setDepartureStation(e.target.value);
                                         handleStationFilter(e.target.value, 'departure');
-                                    }}
+                                    }}  
+                                    
                                 />
                                 {filteredDepartureStations.length > 0 && (
-                                    <ul className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg">
+                                    <ul className={ ` absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg max-h-52 overflow-hidden overflow-y-scroll `}>
                                         {filteredDepartureStations.map((station, index) => (
                                             <li 
                                                 key={index}
@@ -109,15 +131,16 @@ export default function HeroSectionDefault() {
                                 <input
                                     type="text"
                                     placeholder="Enter arrival station"
-                                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                                    className={`w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:outline-none focus:outline-none ${errors.arrivalStation &&  "border-red-500"}`}
                                     value={arrivalStation}
                                     onChange={(e) => {
                                         setArrivalStation(e.target.value);
                                         handleStationFilter(e.target.value, 'arrival');
                                     }}
+                                    
                                 />
                                 {filteredArrivalStations.length > 0 && (
-                                    <ul className="absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg">
+                                    <ul className={`absolute z-10 w-full bg-white border border-gray-300 mt-1 rounded-md shadow-lg max-h-52 overflow-hidden overflow-y-scroll `}>
                                         {filteredArrivalStations.map((station, index) => (
                                             <li 
                                                 key={index}
@@ -134,20 +157,12 @@ export default function HeroSectionDefault() {
                                 )}
                             </div>
                         </div>
-
-                        <div className="space-y-2">
-                            <label className="block text-sm font-medium text-gray-700">JOURNEY DATE</label>
-                            <div className="relative">
-                                <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                                <input
-                                    type="date"
-                                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-                                    value={journeyDate}
-                                    onChange={(e) => setJourneyDate(e.target.value)}
-                                    min={new Date().toISOString().split('T')[0]}
-                                />
-                            </div>
-                        </div>
+                        
+                        <DateInput 
+                            value={journeyDate}
+                            onChange={(e) => setJourneyDate(e.target.value)}
+                            error={errors.journeyDate}
+                        />
 
                         <div className="space-y-2">
                             <label className="block text-sm font-medium text-gray-700">Action</label>

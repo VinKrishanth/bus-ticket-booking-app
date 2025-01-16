@@ -3,6 +3,7 @@ import axiosInstance from "../utils/axiosConfig";
 import { useSelector } from "react-redux";
 import BusSchedule from "../components/admin/BusSchedule";
 import SideNavigation from "../components/header/SideNavigation";
+import axios from "axios";
 
 export default function Dashboard() {
   const mobileOpen = useSelector((state) => state.theme.isMobileOpen);
@@ -22,6 +23,8 @@ export default function Dashboard() {
 
     fetchWelcomeMessage();
   }, []);
+
+
 
   return (
     <div className={`flex ${Theme ? "bg-white" : "bg-gray-900"} min-h-[90vh]`}>

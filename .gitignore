@@ -7,6 +7,8 @@ bus-booking-client/src/.env
 bus-booking-server/src/.env
 bus-booking-server/.env
 
+# backend
+/backend
 
 *.txt
 *.drawio

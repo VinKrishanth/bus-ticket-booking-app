@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthInput from '../input/AuthInput';
 import AuthInputIcon from '../input/AuthInputIcon';
-import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../../utils/axiosConfig.js';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://bus-ticket-booking-server-nu.vercel.app";
 
 function AuthForm({ authMethod }) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState(
         authMethod === 'register'
-            ? { user_name: '', email: '', password: '', repeat_password: '' }
-            : { user_name: '', password: '' }
+            ? { username: '', email: '', password: '', repeat_password: '' }
+            : { username: '', password: '' }
     );
 
     const [showPassword, setShowPassword] = useState(false);
     const [showRepeatPassword, setShowRepeatPassword] = useState(false);
     const [errors, setErrors] = useState({});
     
-    
     useEffect(() => {
         if (authMethod === 'register') {
-            setFormData({ user_name: '', email: '', password: '', repeat_password: '' });
+            setFormData({ username: '', email: '', password: '', repeat_password: '' });
         } else {
-            setFormData({ user_name: '', password: '' });
+            setFormData({ username: '', password: '' });
         }
     }, [authMethod]);
 
-    
     const inputDataChange = (event) => {
         const { name, value } = event.target;
         setFormData((prev) => ({
@@ -37,50 +36,53 @@ function AuthForm({ authMethod }) {
         }));
     };
 
-    
     const handleSubmit = async (event) => {
         event.preventDefault();
         let formErrors = {};
-    
-        if (!formData.user_name.trim()) {
-            formErrors.user_name = 'Name is required';
+
+        if (!formData.username.trim()) {
+            formErrors.username = 'Username is required';
         }
         if (!formData.password) {
             formErrors.password = 'Password is required';
         } else if (formData.password.length < 6) {
             formErrors.password = 'Password must be at least 6 characters';
         }
-    
+
         if (authMethod === 'register') {
             if (!formData.email.trim()) {
                 formErrors.email = 'Email is required';
             } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
                 formErrors.email = 'Invalid email format';
             }
-    
+
             if (!formData.repeat_password) {
                 formErrors.repeat_password = 'Confirm password is required';
             } else if (formData.password !== formData.repeat_password) {
                 formErrors.repeat_password = 'Passwords do not match';
             }
         }
-    
+
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
             return;
         }
-    
+
         try {
             let response;
             if (authMethod === 'register') {
-                response = await axiosInstance.post('/api/customer/register', formData);
+                response = await axios.post(`${API_BASE_URL}/api/customer/register`, formData);
                 toast.success('Registration successful! Redirecting to login...', { position: 'top-right' });
                 setTimeout(() => navigate('/bus-booking/login'), 2000); 
             } else {
-                response = await axiosInstance.post('/api/customer/login', {
-                    user_name: formData.user_name,
+                response = await axios.post(`${API_BASE_URL}/api/customer/login`, {
+                    username: formData.username,
                     password: formData.password,
                 });
+
+                // Store token in localStorage
+                localStorage.setItem('token', response.data.token);
+                
                 toast.success('Login successful! Redirecting...', { position: 'top-right' });
                 setTimeout(() => navigate('/bus-booking/dashboard'), 2000);
             }
@@ -105,14 +107,13 @@ function AuthForm({ authMethod }) {
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     <AuthInput
-                        id="user_name"
-                        name="user_name"
-                        label="User Name"
-                        placeholder="Enter your name"
-                        value={formData.user_name}
+                        id="username"
+                        name="username"
+                        label="Username"
+                        placeholder="Enter your username"
+                        value={formData.username}
                         onChange={inputDataChange}
-                        error={errors.user_name}
-                        key={1}
+                        error={errors.username}
                     />
 
                     {authMethod === 'register' && (
@@ -124,7 +125,6 @@ function AuthForm({ authMethod }) {
                             value={formData.email}
                             onChange={inputDataChange}
                             error={errors.email}
-                            key={2}
                         />
                     )}
 
@@ -136,12 +136,11 @@ function AuthForm({ authMethod }) {
                         value={formData.password}
                         onChange={inputDataChange}
                         error={errors.password}
-                        key={3}
                         showPassword={showPassword}
                         setShowPassword={setShowPassword}
                     />
 
-                    {authMethod === 'register' ? (
+                    {authMethod === 'register' && (
                         <AuthInputIcon
                             id="repeat_password"
                             name="repeat_password"
@@ -150,11 +149,12 @@ function AuthForm({ authMethod }) {
                             value={formData.repeat_password}
                             onChange={inputDataChange}
                             error={errors.repeat_password}
-                            key={4}
                             showPassword={showRepeatPassword}
                             setShowPassword={setShowRepeatPassword}
                         />
-                    ) : (
+                    )}
+
+                    {!authMethod === 'register' && (
                         <div className="flex items-center">
                             <input
                                 type="checkbox"
@@ -183,34 +183,23 @@ function AuthForm({ authMethod }) {
                     </button>
                 </form>
 
-                {authMethod === 'register' ? (
-                    <>
-                        <div className="mt-6 text-center">
-                            <p className="text-sm text-gray-600">
-                                Already have an account?{' '}
-                                <Link to="/bus-booking/login" className="text-[#6d4aff] hover:underline">
-                                    Sign in
-                                </Link>
-                            </p>
-                        </div>
-
-                        <div className="mt-6 text-center text-sm text-gray-500">
-                            By creating a QTechy account, you agree to our{' '}
-                            <a href="#" className="text-[#6d4aff] hover:underline">
-                                terms and conditions
-                            </a>
-                        </div>
-                    </>
-                ) : (
-                    <div className="mt-6 text-center">
+                <div className="mt-6 text-center">
+                    {authMethod === 'register' ? (
+                        <p className="text-sm text-gray-600">
+                            Already have an account?{' '}
+                            <Link to="/bus-booking/login" className="text-[#6d4aff] hover:underline">
+                                Sign in
+                            </Link>
+                        </p>
+                    ) : (
                         <p className="text-sm text-gray-600">
                             New to QTechy?{' '}
                             <Link to="/bus-booking/register" className="text-[#6d4aff] hover:underline">
                                 Create account
                             </Link>
                         </p>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </main>
     );

@@ -14,7 +14,10 @@ connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true }));
+app.use(cors({ 
+    origin: 'https://krishanthbusbooker.vercel.app/',  
+    credentials: true
+ }));
 
 app.use("/", homeRoutes);
 app.use('/api/customer', customerRoutes);

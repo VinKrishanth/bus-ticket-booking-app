@@ -10,29 +10,24 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
-// Connect to MongoDB
 connectDB();
 
-// Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL || "https://krishanthbusbooker.vercel.app",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors({
+  origin: process.env.FRONTEND_URL, 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, 
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
-//  Routes
+
 app.use("/", homeRoutes);
 app.use("/api/customer", customerRoutes);
 
 
-// Error Handling Middleware
 app.use((err, req, res, next) => {
-  console.error("🔥 Error:", err.message);
+  console.error(" Error:", err.message);
   res.status(err.status || 500).json({ msg: err.message || "Server Error" });
 });
 

@@ -73,11 +73,11 @@ function AuthForm({ authMethod }) {
         try {
             let response;
             if (authMethod === 'register') {
-                response = await axiosInstance.post('/register', formData);
+                response = await axiosInstance.post('/api/customer/register', formData);
                 toast.success('Registration successful! Redirecting to login...', { position: 'top-right' });
                 setTimeout(() => navigate('/bus-booking/login'), 2000); 
             } else {
-                response = await axiosInstance.post('/login', {
+                response = await axiosInstance.post('/api/customer/login', {
                     user_name: formData.user_name,
                     password: formData.password,
                 });

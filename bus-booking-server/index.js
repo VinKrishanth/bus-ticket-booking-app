@@ -10,15 +10,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
+
 connectDB();
 
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: process.env.FRONTEND_URL, 
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, 
-  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 

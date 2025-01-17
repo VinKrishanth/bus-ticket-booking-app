@@ -80,7 +80,6 @@ function AuthForm({ authMethod }) {
                     password: formData.password,
                 });
 
-                // Store token in localStorage
                 localStorage.setItem('token', response.data.token);
                 
                 toast.success('Login successful! Redirecting...', { position: 'top-right' });

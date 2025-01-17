@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import AuthInput from '../input/AuthInput';
 import AuthInputIcon from '../input/AuthInputIcon';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../../utils/axiosConfig.js';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AuthForm({ authMethod }) {
     const navigate = useNavigate();
@@ -69,36 +72,20 @@ function AuthForm({ authMethod }) {
     
         try {
             let response;
-    
             if (authMethod === 'register') {
-                response = await fetch('http://localhost:5000/api/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData),
-                });
+                response = await axiosInstance.post('/register', formData);
+                toast.success('Registration successful! Redirecting to login...', { position: 'top-right' });
+                setTimeout(() => navigate('/bus-booking/login'), 2000); 
             } else {
-                response = await fetch('http://localhost:5000/api/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user_name: formData.user_name, password: formData.password }),
+                response = await axiosInstance.post('/login', {
+                    user_name: formData.user_name,
+                    password: formData.password,
                 });
-            }
-    
-            const data = await response.json();
-    
-            if (response.ok) {
-                if (authMethod === 'register') {
-                    alert('Registration successful! Redirecting to login...');
-                    navigate('/bus-booking/login'); 
-                } else {
-                    alert('Login successful!');
-                    navigate('/bus-booking/dashboard'); // Redirect to user dashboard after login
-                }
-            } else {
-                setErrors({ apiError: data.message || 'Something went wrong!' });
+                toast.success('Login successful! Redirecting...', { position: 'top-right' });
+                setTimeout(() => navigate('/bus-booking/dashboard'), 2000);
             }
         } catch (error) {
-            setErrors({ apiError: 'Server error. Please try again later.' });
+            toast.error(error.response?.data?.message || 'Something went wrong!', { position: 'top-right' });
         }
     };
 

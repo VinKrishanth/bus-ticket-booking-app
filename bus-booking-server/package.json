@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/app.js",
-    "server": "nodemon src/app.js"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "bus",

@@ -51,7 +51,7 @@ export default function BookCard({label, mainTitle}) {
         label= {label}
         BookingClick={BookingClick}
       />
-      <div className={` ${BookingClick ? 'flex' : 'hidden'} flex-col justify-start items-start min-w-full px-4 py-2 bg-gray-200 text-black gap-2`}>
+      <div className={` ${BookingClick ? 'flex' : 'hidden'} flex-col justify-start items-start min-w-full md:px-4 py-2 bg-gray-200 text-black gap-2`}>
         <div className={`${mainTitle ? 'flex' : 'hidden'}   flex-col justify-center items-center min-w-full tracking-wide cursor-pointer align-text-top pb-2`}>
           <p className={`font-light text-xs`}>Depot Name</p>
           <h2 className={`font-bold text-sm`}>Wellsara</h2>

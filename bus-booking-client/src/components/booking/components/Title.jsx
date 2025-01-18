@@ -7,7 +7,7 @@ export default function Title({onClick,label,BookingClick}) {
         className={`flex justify-between items-center px-4 py-1.5  bg-purple-600 text-white min-w-full`}
         onClick={onClick}
       >
-          <li className={`text-sm tracking-wide font-bold`}>{label}</li>
+          <li className={`md:text-sm text-xs tracking-wide font-bold`}>{label}</li>
           <li>
               <span className={`scale-125`}>
                 {

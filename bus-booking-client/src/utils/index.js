@@ -5,6 +5,7 @@ export { default as Login } from '../pages/Login';
 export { default as Register } from '../pages/Register';
 export { default as SearchBuses } from '../pages/SearchBuses';
 export { default as BookingProceed } from '../pages/BookingProceed';
+export { default as BookingPayment } from '../pages/BookingPayment';
 export { default as Navbar } from '../components/header/Navbar';
 
 export { default as AmericaCard } from '../assets/images/amexcard-96.png';
@@ -19,6 +20,10 @@ export { default as VisaCard } from '../assets/images/visacard-96.png';
 export { default as LogoSource } from '../assets/images/qTechy-logo-1.png';
 export { default as MobileNavigateSource } from '../assets/images/qTechy-nav-source.png';
 export { default as QTechyBusDemo } from '../assets/images/qTechy-bus-demo.png';
+export { default as BankPeople } from '../assets/images/people-bank.jpeg';
+export { default as BankCommercial } from '../assets/images/commercial-bank.png';
+export { default as BankBOC } from '../assets/images/boc-bank.jpeg';
+export { default as BankCNV } from '../assets/images/cnv.png';
 
 
 export const NavigationLinks = [

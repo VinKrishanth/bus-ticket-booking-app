@@ -2,6 +2,7 @@ import React from 'react'
 import { BusSeatInfo } from '../utils/Bus.js'
 import SeatColumn from '../components/bus/SeatColumn.jsx'
 import { useNavigate } from 'react-router-dom'
+import { GiSteeringWheel } from "react-icons/gi";
 
 export default function BusLayout() {
     const navigate = useNavigate();
@@ -38,7 +39,11 @@ export default function BusLayout() {
   return (
     <div className={`flex sm:justify-start justify-center items-start sm:p-8 sm:min-w-fit min-w-full sm:flex-row flex-col`}>
         <div className={`flex justify-center items-center  my-3 mx-2 sm:min-w-fit min-w-full`}>
-            <div className={`w-10 h-10 border-2 rounded-full sm:-translate-x-1 translate-x-16`}></div>
+            <div className={` flex justify-center items-center  rounded-full sm:-translate-x-1 translate-x-16`}>
+                <span className={`min-w-full min-h-full sm:rotate-90 `}>
+                    <GiSteeringWheel  className='w-10 h-10'/>
+                </span>
+            </div>
         </div>
         <div className={`flex sm:flex-col flex-row-reverse sm:justify-start justify-center sm:min-w-fit min-w-full items-start sm:scale-100 scale-125 sm:translate-y-0 translate-y-12`}>
             {

@@ -3,10 +3,12 @@ import { QTechyBusDemo } from '../../utils/index.js'
 import { SearchBusDemo } from '../../utils/SearchBusDemo.js'
 import TextCard from './TextCard.jsx';
 import { IoIosInformationCircle } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../button/Button.jsx';
 
 export default function BusBookingCard() {
+    const location = useLocation ();
+    const BookButton = (location.pathname === '/bus-booking/search-buses')
     const navigation = useNavigate();
     const [moreInfo, setMoreInfo] = useState(false) ; 
 
@@ -15,7 +17,7 @@ export default function BusBookingCard() {
     }
 
     const handleClick = () => {
-        navigation('/bus-booking/booking');
+        BookButton ? navigation('/bus-booking/booking') : navigation('/bus-booking/search-buses')
     }
   return (
     <div className={`flex flex-col min-w-screen justify-items-start  rounded-xl xl:px-44 `}>
@@ -69,14 +71,51 @@ export default function BusBookingCard() {
                             <h1 className={`sm:text-sm text-xs tracking-wider font-normal cursor-pointer`}>Duration: <span className={`font-semibold sm:text-base text-sm`}>{SearchBusDemo[0].duration} Hours</span></h1>
                             <Button 
                                 Icon={true}
-                                label={`Book Now`}
+                                label={BookButton ? `Book Now`: `Hide`}
                                 onClick={handleClick}
                                 className="bg-tertiary  bg-opacity-75 text-opacity-100 hover:bg-opacity-90 active:bg-opacity-100"
                             />
                         </div>
+                    </div>
                 </div>
-                </div>
-                <div>
+                <div className={`sm:hidden flex justify-start items-start min-w-full`}>
+                    <div  className={`flex flex-col justify-end space-y-1`}>
+                        <div className={`flex flex-row justify-items-start relative space-x-20 `}>
+                            <TextCard 
+                                arr={SearchBusDemo[0].departureInfo}
+                            />
+                            <div className={`min-w-24 h-4 bg-tertiary clip-path-triangle rotate-90 absolute translate-y-14  cursor-pointer`}></div>
+                                <TextCard 
+                                arr={SearchBusDemo[0].arrivalInfo}
+                            />
+                        </div>
+                        <h1 className={`text-sm tracking-wider font-normal cursor-pointer p-2 text-center`}>Duration: <span className={`font-semibold`}>{SearchBusDemo[0].duration} Hours</span></h1>
+                    </div>
+                    <div className={`flex flex-row justify-end flex-grow `}>
+                        <div className='space-y-1 border-l-2 pl-4 border-black'>
+                            <ul className={`flex flex-col  text-black space-y-2`}>
+                                <li  className={`flex justify-start items-start flex-col   `}>
+                                    <h2 className={`text-sm  font-bold uppercase cursor-pointer leading-6 tracking-widest`}>Rs.<span className={`text-lg`}>1,402.00</span></h2>
+                                </li>
+                                <li  className={`flex justify-start items-start flex-col   `}>
+                                    <p className={`text-xs  tracking-wide cursor-pointer capitalize`}>Booking Closing Date</p>
+                                    <h2 className={`text-sm  font-bold uppercase cursor-pointer leading-6 tracking-widest`}>2025-01-18</h2>
+                                </li>
+                                <li  className={`flex justify-start items-start flex-col  `}>
+                                    <p className={`text-xs  tracking-wide cursor-pointer capitalize`}>Available Seats</p>
+                                    <h2 className={`text-sm  font-bold uppercase cursor-pointer leading-6 tracking-widest`}>45</h2>
+                                </li>
+                            </ul>
+                            <div className={`flex justify-between min-w-full items-center sm:flex-row flex-col gap-4`}>
+                                <Button 
+                                    Icon={true}
+                                    label={BookButton ? `Book Now`: `Hide`}
+                                    onClick={handleClick}
+                                    className="bg-tertiary  bg-opacity-75 text-opacity-100 hover:bg-opacity-90 active:bg-opacity-100"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
             <div className={`flex justify-end items-end min-w-full py-2 px-6  bg-gray-800 text-white rounded-b-xl`}>

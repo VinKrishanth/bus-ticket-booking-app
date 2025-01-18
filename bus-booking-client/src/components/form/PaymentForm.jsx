@@ -5,8 +5,11 @@ import Modal from '../Modal/Modal';
 import PaymentText from '../input/PaymentText';
 import SelectInputText from '../input/SelectInputText';
 import { BankCNV } from '../../utils/index.js'
+import { useNavigate } from 'react-router-dom';
 export default function PaymentForm() {
     const currentYear = new Date().getFullYear();
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         card_number: '',
         expiry_date: '',
@@ -18,8 +21,8 @@ export default function PaymentForm() {
     const [isModalVisible, setModalVisible] = useState(false);
 
     const handleConfirmCancel = () => {
-        console.log('Cancelling...');
         setModalVisible(false);
+        navigate('/bus-booking/BookingPayment/Failed');
     };
 
     const handleClose = () => {

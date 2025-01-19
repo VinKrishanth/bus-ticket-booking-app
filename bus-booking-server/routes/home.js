@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.status(200).json({ message: "Welcome to the Bus Ticket Booking System API!" });
+  res.status(200).json({ message: "Manage your bus bookings and travel plans" });
 });
 
 export default router;

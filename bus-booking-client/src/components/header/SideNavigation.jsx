@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { MdHome, MdDashboard , MdManageAccounts, MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdFeedback } from "react-icons/md";
+import { MdHome, MdDashboard , MdManageAccounts, MdOutlineArrowDropDown, MdOutlineArrowDropUp, MdFeedback,MdWorkHistory  } from "react-icons/md";
+import { FaCalendarAlt } from "react-icons/fa";
+import { IoLogOut } from "react-icons/io5";
+import {  Calendar,  History, LogOut, User} from 'lucide-react';
 import { AiFillSchedule } from "react-icons/ai";
 import MobileHeader from './MobileHeader';
 import Logo from '../logo/Logo'
+import { dashboardAction } from '../../redux/dashboard-slice';
 
 export default function SideNavigation() {
   const Theme = useSelector(state => state.theme.lightTheme);
@@ -13,7 +17,10 @@ export default function SideNavigation() {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleDropdownPages = () => setDropdownPages(!dropdownPages);
-
+  const dispatch = useDispatch();
+  const handleClick = (tap) => {
+    dispatch(dashboardAction.tapChange(tap));
+  }
 
 
   return (
@@ -65,6 +72,48 @@ export default function SideNavigation() {
                   <MdDashboard  />
                 </span>
                 <span className="ml-3">Dashboard</span>
+              </Link>
+            </li>
+            <li>
+              <button
+                onClick={()=> {handleClick('upcoming')}}
+                className={`flex items-center px-2 py-1 text-base font-normal ${Theme ? 'text-gray-900 rounded-lg  hover:bg-gray-100' : 'hover:bg-gray-700 text-white'}   group`}
+              >
+                <span 
+                  aria-hidden="true"
+                  className={`flex justify-items-center scale-125 ${Theme ? 'text-gray-400 group-hover:text-gray-900 ' : ' group-hover:text-white'}  `}
+                >
+                  <FaCalendarAlt  />
+                </span>
+                <span className="ml-3">Upcoming Trips</span>
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={()=> {handleClick('history')}}
+                className={`flex items-center px-2 py-1 text-base font-normal ${Theme ? 'text-gray-900 rounded-lg  hover:bg-gray-100' : 'hover:bg-gray-700 text-white'}   group`}
+              >
+                <span 
+                  aria-hidden="true"
+                  className={`flex justify-items-center scale-125  ${Theme ? 'text-gray-400 group-hover:text-gray-900 ' : ' group-hover:text-white'}  `}
+                >
+                  <MdWorkHistory   />
+                </span>
+                <span className="ml-3">Booking History</span>
+              </button>
+            </li>
+            <li>
+              <Link
+                to="/"
+                className={`flex items-center px-2 py-1 text-base font-normal ${Theme ? 'text-gray-900 rounded-lg  hover:bg-gray-100' : 'hover:bg-gray-700 text-white'}   group`}
+              >
+                <span 
+                  aria-hidden="true"
+                  className={`flex justify-items-center scale-125 ${Theme ? 'text-red-500 group-hover:text-gray-900 ' : ' group-hover:text-white'}  `}
+                >
+                  <IoLogOut  />
+                </span>
+                <span className="ml-3">Logout</span>
               </Link>
             </li>
             <li className={'hidden'}>
@@ -133,4 +182,5 @@ export default function SideNavigation() {
     </>
   )
 }
+
 

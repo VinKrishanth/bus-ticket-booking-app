@@ -10,11 +10,9 @@ export default function SideNavigation() {
   const Theme = useSelector(state => state.theme.lightTheme);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);  
   const [dropdownPages, setDropdownPages] = useState(false);
-  const [dropdownSales, setDropdownSales] = useState(false);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleDropdownPages = () => setDropdownPages(!dropdownPages);
-  const toggleDropdownSales = () => setDropdownSales(!dropdownSales);
 
 
 
@@ -69,7 +67,7 @@ export default function SideNavigation() {
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
-            <li className={''}>
+            <li className={'hidden'}>
               <button
                 onClick={toggleDropdownPages}
                 type="button"

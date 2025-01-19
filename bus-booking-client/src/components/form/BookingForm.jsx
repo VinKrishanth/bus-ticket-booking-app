@@ -63,7 +63,7 @@ export default function BookingForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="sm:mt-8 mt-4 sm:border-2  sm:p-8 p-0 space-y-2 sm:pt-0 pt-8 ">
+        <form onSubmit={handleSubmit} className="sm:mt-8 mt-4 sm:border-2  sm:p-8 p-0 space-y-2 sm:pt-5 pt-8 ">
             <h2 className="sm:text-2xl text-xl tracking-wider align-text-top cursor-pointer font-semibold sm:text-left text-center sm:pb-0 pb-2">
                 Your Details
             </h2>

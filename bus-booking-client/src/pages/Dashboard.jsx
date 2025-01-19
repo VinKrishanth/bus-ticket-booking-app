@@ -35,7 +35,7 @@ export default function Dashboard() {
   }, [isLoggedIn, navigate]);
 
   return (
-    <div className={`flex ${Theme ? "bg-white" : "bg-gray-900"} min-h-[90vh]`}>
+    <div className={`flex ${Theme ? "bg-white" : "bg-gray-900"} min-h-[85vh]`}>
       <SideNavigation />
       <main
         className={`flex-grow transition-all duration-300 ${mobileOpen ? "sm:ml-0" : "sm:ml-64"} sm:pt-4 pt-20 px-4`}
@@ -51,11 +51,6 @@ export default function Dashboard() {
             <p className="mt-2 text-lg">{welcomeMessage || "Loading..."}</p>
           )}
         </div>
-
-        {/* Uncomment below if BusSchedule is needed */}
-        {/* <div className="mt-4">
-          <BusSchedule />
-        </div> */}
       </main>
     </div>
   );

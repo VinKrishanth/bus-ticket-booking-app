@@ -85,8 +85,8 @@ export default function PaymentForm() {
             setErrors(formErrors);
             return;
         }
-        
-        console.log('Form data', formData);
+        navigate('/bus-booking/dashboard');
+        // console.log('Form data', formData);
     };
     
 

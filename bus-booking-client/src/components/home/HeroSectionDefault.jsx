@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {  useSelector } from 'react-redux';
 import DateInput from '../input/DateInput';
 import { backgroundSource1, backgroundSource2 } from '../../utils/index.js';
+import { locations} from '../../utils/UserDataBase.js'
 
 export default function HeroSectionDefault() {
     const current = new Date();
@@ -28,7 +29,7 @@ export default function HeroSectionDefault() {
 
     useEffect(() => {
         const fetchStations = async () => {
-            const mockStations = ['Colombo', 'Galle', 'Kandy', 'Jaffna', 'Anuradhapura', 'Trincomalee','ColomboA', 'GalleA', 'KandyA', 'JaffnaA', 'AnuradhapuraA', 'TrincomaleeA'];
+            const mockStations = locations.map(location => location.place);
             setStations(mockStations);
         };
         fetchStations();

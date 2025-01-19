@@ -1,6 +1,5 @@
 import BusSchedule from '../models/busSchedule.js';
 
-// Create Bus Schedule
 export const createBusSchedule = async (req, res) => {
   try {
     const busSchedule = new BusSchedule(req.body);
@@ -11,7 +10,8 @@ export const createBusSchedule = async (req, res) => {
   }
 };
 
-// Get All Bus Schedules
+
+
 export const getAllBusSchedules = async (req, res) => {
   try {
     const schedules = await BusSchedule.find();
@@ -21,7 +21,8 @@ export const getAllBusSchedules = async (req, res) => {
   }
 };
 
-// Get Bus Schedule by ID
+
+
 export const getBusScheduleByID = async (req, res) => {
   try {
     const schedule = await BusSchedule.findById(req.params.id);
@@ -34,7 +35,8 @@ export const getBusScheduleByID = async (req, res) => {
   }
 };
 
-// Update Bus Schedule
+
+
 export const updateBusSchedule = async (req, res) => {
   try {
     const updatedSchedule = await BusSchedule.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -47,7 +49,8 @@ export const updateBusSchedule = async (req, res) => {
   }
 };
 
-// Delete Bus Schedule
+
+
 export const deleteBusSchedule = async (req, res) => {
   try {
     const deletedSchedule = await BusSchedule.findByIdAndDelete(req.params.id);

@@ -6,6 +6,7 @@ import cors from "cors";
 import customerRoutes from "./routes/customerRoutes.js";
 import homeRoutes from "./routes/home.js";
 import busScheduleRoutes from './routes/busScheduleRoutes.js';
+import busBookingRoutes from './routes/busBookingRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -24,8 +25,8 @@ app.use(cors({
 
 app.use("/", homeRoutes);
 app.use("/api/customer", customerRoutes);
-app.use('/api', busScheduleRoutes);
-
+app.use('/api/', busScheduleRoutes);
+app.use('/api/bookings', busBookingRoutes);
 
 
 app.use((err, req, res, next) => {

@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Logo from '../logo/Logo';
+import { useLocation } from 'react-router-dom';
 
 export default function Footer() {
     const Theme = useSelector(state => state.theme.lightTheme);
+    const location = useLocation();
     const navItems = [
       { name: "Home", url: "/" },
       { name: "Login", url: "/bus-booking/login" },
@@ -12,9 +14,9 @@ export default function Footer() {
     ];
 
   return (
-    <footer className={`${false ? 'bg-white' : 'bg-gray-900 '}`}>
+    <footer className={`${false ? 'bg-white' : 'bg-gray-900 '} ${location.pathname === '/bus-booking/dashboard' && 'sm:pl-64'}`}>
       <div className="w-full max-w-screen mx-auto py-4 px-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-center sm:justify-between py-2">
           <div className=" items-center  space-x-3 rtl:space-x-reverse p-4 ">
             <Logo />
           </div>
@@ -33,7 +35,7 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <hr className={`py-2 ${false ? 'border-gray-200' : 'border-gray-700'}  sm:mx-auto`} />
+        <hr className={`py-2  ${false ? 'border-gray-200' : 'border-gray-700'}  sm:mx-auto`} />
         <span className={`block text-sm ${false ? 'text-gray-500 ' : 'text-gray-400'} text-center `}>
           © {new Date().getFullYear()} {" "}QTechy Bus Booking System. All Rights Reserved.
         </span>

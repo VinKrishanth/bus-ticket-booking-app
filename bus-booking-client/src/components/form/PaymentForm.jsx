@@ -85,14 +85,14 @@ export default function PaymentForm() {
             setErrors(formErrors);
             return;
         }
-    
+        
         console.log('Form data', formData);
     };
     
 
     return (
         <>
-            <form onSubmit={handlePay} className="space-y-2.5 min-w-full g">
+            <form onSubmit={handlePay} className="sm:space-y-2.5 space-y-3.5 min-w-full ">
                 <div className="flex justify-end items-center py-1">
                     <p className="text-sm font-normal tracking-wide align-text-top cursor-pointer">
                         * Required Field
@@ -165,13 +165,13 @@ export default function PaymentForm() {
                     <Button
                         Icon={true}
                         label="Cancel"
-                        className="bg-red-500 border-2 rounded-md border-gray-400 text-black px-8 font-bold tracking-wide"
+                        className="bg-red-500  rounded-md  text-black px-8 font-bold tracking-wide text-base"
                         onClick={handleCancel}
                     />
                     <Button
                         Icon={false}
                         label="Pay"
-                        className="bg-green-500 border-2 rounded-md border-gray-400 text-black px-8 font-bold tracking-wide"
+                        className="bg-green-500  rounded-md  text-black px-8 font-bold tracking-wide"
                         onClick={handlePay} 
                     />
                 </div>
@@ -184,13 +184,13 @@ export default function PaymentForm() {
                     <>
                         <button
                             onClick={handleClose}
-                            className="border sm:px-4 px-5 sm:py-2 bg-gray-300 rounded"
+                            className=" sm:px-4 px-5 sm:py-2 bg-gray-300 rounded text-sm font-bold"
                         >
                             Cancel
                         </button>
                         <button
                             onClick={handleConfirmCancel}
-                            className="border sm:px-4 px-5 sm:py-2 py-1 bg-red-500 text-white rounded sm:text-sm text-xs"
+                            className=" sm:px-4 px-5 py-2 bg-red-500 text-white rounded text-sm font-bold"
                         >
                             Confirm
                         </button>

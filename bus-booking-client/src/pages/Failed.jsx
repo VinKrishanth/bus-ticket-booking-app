@@ -10,7 +10,7 @@ export default function Failed() {
 
   return (
     <div 
-      className={`flex justify-center items-center min-h-[70vh] md:px-8 pt-28`}
+      className={`flex justify-center items-center min-h-[70vh] md:px-8 pt-28 pb-16`}
     >
       <div className={`flex justify-start items-center flex-col sm:border-2 shadow shadow-blue-400 min-h-96 sm:min-w-96 min-w-64  rounded-xl p-8 space-y-4 cursor-pointer`}>
         <h1 className={`text-2xl sm:text-xl font-semibold text-red-500 capitalize tracking-wide`}>Payment unsuccessful.</h1>

@@ -4,20 +4,38 @@ import Logo from '../logo/Logo';
 
 export default function Footer() {
     const Theme = useSelector(state => state.theme.lightTheme);
+    const navItems = [
+      { name: "Home", url: "/" },
+      { name: "Login", url: "/bus-booking/login" },
+      { name: "Github", url: "https://github.com/VinKrishanth/bus-ticket-booking-app", newTab: true },
+      { name: "LinkedIn", url: "https://www.linkedin.com/in/vinyagamoorthi-krishanth", newTab: true }
+    ];
+
   return (
-    <footer className={`${Theme ? 'bg-white ' : 'bg-gray-900 '}`}>
-      <div className="w-full max-w-screen mx-auto p-4 md:py-8">
+    <footer className={`${false ? 'bg-white' : 'bg-gray-900 '}`}>
+      <div className="w-full max-w-screen mx-auto py-4 px-8">
         <div className="sm:flex sm:items-center sm:justify-between">
-          <div className=" items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse p-4 hidden">
+          <div className=" items-center  space-x-3 rtl:space-x-reverse p-4 ">
             <Logo />
           </div>
-          <ul className={`hidden flex-wrap items-center mb-6 text-sm font-medium ${Theme ? 'text-gray-500' : 'text-gray-400'}  sm:mb-0 `}>
-            
+          <ul className="flex flex-wrap justify-center items-center text-sm font-medium text-gray-400 px-4">
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.url}
+                  className="hover:underline mx-4"
+                  target={item.newTab ? "_blank" : "_self"} 
+                  rel={item.newTab ? "noopener noreferrer" : undefined} 
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
-        <hr className={`my-6 ${Theme ? 'border-gray-200' : 'border-gray-700'}  sm:mx-auto  lg:my-8`} />
-        <span className={`block text-sm ${Theme ? 'text-gray-500 ' : 'text-gray-400'} text-center `}>
-          © 2025{" "}QTechy Bus Booking System. All Rights Reserved.
+        <hr className={`py-2 ${false ? 'border-gray-200' : 'border-gray-700'}  sm:mx-auto`} />
+        <span className={`block text-sm ${false ? 'text-gray-500 ' : 'text-gray-400'} text-center `}>
+          © {new Date().getFullYear()} {" "}QTechy Bus Booking System. All Rights Reserved.
         </span>
       </div>
     </footer>

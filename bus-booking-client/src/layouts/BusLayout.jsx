@@ -37,7 +37,7 @@ export default function BusLayout() {
     ]
 
   return (
-    <div className={`flex sm:justify-start justify-center items-start sm:p-8 sm:min-w-fit min-w-full sm:flex-row flex-col`}>
+    <div className={`flex sm:justify-start justify-center items-start sm:p-8 sm:min-w-fit min-w-full sm:flex-row flex-col `}>
         <div className={`flex justify-center items-center  my-3 mx-2 sm:min-w-fit min-w-full`}>
             <div className={` flex justify-center items-center  rounded-full sm:-translate-x-1 translate-x-16`}>
                 <span className={`min-w-full min-h-full sm:rotate-90 `}>

@@ -28,7 +28,7 @@ export default function TextInput({
                 value={value}
                 placeholder={placeholder}
                 onChange={onChange} 
-                className={`border ${error ? 'border-red-500' : 'border-gray-300'} text-xs bg-gray-50 text-gray-900 rounded-lg block w-full p-2.5`}
+                className={`border ${error ? 'ring-red-500 ring-2' : 'border-gray-300'} text-sm bg-gray-50 text-gray-900 rounded-lg hover:outline-none focus:outline-none block w-full p-2.5 hover:ring-2 shadow`}
                 maxLength={type === "number" ? undefined : maxLength} 
             />
             {error && 

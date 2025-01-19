@@ -23,10 +23,10 @@ export default function BusBookingCard() {
     <div className={`flex flex-col min-w-screen justify-items-start  rounded-xl xl:px-44 `}>
         <div className={`flex flex-col shadow-md rounded-xl shadow-gray-300`}>
             <div className={`flex justify-between bg-blue-500 rounded-t-xl py-2 px-6 border-b-[6px] border-tertiary text-white `}>
-                <h2 className={`capitalize cursor-pointer text-xs tracking-wider`}>stops@<span className='font-semibold'>Colombo</span></h2>
-                <h2 className={`capitalize  cursor-pointer text-xs tracking-wider`}>Route No <span className='font-semibold'>87</span></h2>
+                <h2 className={`capitalize cursor-pointer text-sm tracking-wider`}>stops@<span className='font-semibold'>Colombo</span></h2>
+                <h2 className={`capitalize  cursor-pointer text-sm tracking-wider`}>Route No <span className='font-semibold'>87</span></h2>
             </div>
-            <main className={`flex sm:flex-row  flex-col   py-4 px-6 justify-start items-center xl:gap-8 gap-4 min-h-16 shadow-lg shadow-orange-400`}>
+            <main className={`flex sm:flex-row  flex-col   py-4 sm:px-6 px-4 justify-start items-center xl:gap-8 gap-4 min-h-16 shadow-lg shadow-orange-400`}>
                 <div className={`sm:flex hidden justify-start items-center`}>
                     <img 
                         src={QTechyBusDemo}
@@ -78,14 +78,14 @@ export default function BusBookingCard() {
                         </div>
                     </div>
                 </div>
-                <div className={`sm:hidden flex justify-start items-start min-w-full`}>
-                    <div  className={`flex flex-col justify-end space-y-1`}>
-                        <div className={`flex flex-row justify-items-start relative space-x-20 `}>
+                <div className={`sm:hidden flex justify-start items-start min-w-full gap-2`}>
+                    <div  className={`flex flex-col justify-end space-y-1 `}>
+                        <div className={`flex flex-row justify-items-start relative space-x-10 `}>
                             <TextCard 
                                 arr={SearchBusDemo[0].departureInfo}
                             />
-                            <div className={`min-w-24 h-4 bg-tertiary clip-path-triangle rotate-90 absolute translate-y-14  cursor-pointer`}></div>
-                                <TextCard 
+                            <div className={`min-w-24 h-3 bg-tertiary clip-path-triangle rotate-90 absolute translate-y-14  translate-x-2  cursor-pointer`}></div>
+                            <TextCard 
                                 arr={SearchBusDemo[0].arrivalInfo}
                             />
                         </div>
@@ -119,7 +119,7 @@ export default function BusBookingCard() {
                 </div>
             </main>
             <div className={`flex justify-end items-end min-w-full py-2 px-6  bg-gray-800 text-white rounded-b-xl`}>
-                <button className={`text-xs tracking-wider cursor-pointer`}>Boarding/Dropping Points</button>
+                <button className={`text-sm tracking-wider cursor-pointer`}>Boarding/Dropping Points</button>
             </div>
         </div>
     </div>

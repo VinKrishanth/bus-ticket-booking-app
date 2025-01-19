@@ -25,6 +25,8 @@ export { default as BankPeople } from '../assets/images/people-bank.jpeg';
 export { default as BankCommercial } from '../assets/images/commercial-bank.png';
 export { default as BankBOC } from '../assets/images/boc-bank.jpeg';
 export { default as BankCNV } from '../assets/images/cnv.png';
+export { default as backgroundSource1 } from '../assets/images/background-bus-booking-system.png';
+export { default as backgroundSource2 } from '../assets/images/background-bus-booking-system-2.png';
 
 
 export const NavigationLinks = [

@@ -4,7 +4,7 @@ import { BookingTitles } from '../../../utils/Bus.js';
 import Title from './Title'
 
 export default function BookCard({label, mainTitle}) {
-  const [BookingClick, setBookingClick] = useState(true);
+  const [BookingClick, setBookingClick] = useState(false);
   const handleClick = () => {
     setBookingClick(!BookingClick);
   }
@@ -51,7 +51,7 @@ export default function BookCard({label, mainTitle}) {
         label= {label}
         BookingClick={BookingClick}
       />
-      <div className={` ${BookingClick ? 'flex' : 'hidden'} flex-col justify-start items-start min-w-full md:px-4 py-2 bg-gray-200 text-black gap-2`}>
+      <div className={` ${BookingClick ? 'flex' : 'hidden'} flex-col justify-start items-start min-w-full  py-4 bg-gray-100 text-black gap-2`}>
         <div className={`${mainTitle ? 'flex' : 'hidden'}   flex-col justify-center items-center min-w-full tracking-wide cursor-pointer align-text-top pb-2`}>
           <p className={`font-light text-xs`}>Depot Name</p>
           <h2 className={`font-bold text-sm`}>Wellsara</h2>
@@ -70,7 +70,7 @@ export default function BookCard({label, mainTitle}) {
           bills.map((item, index) => {
             return(
               <div 
-                className='flex flex-col min-w-full gap-0.5'
+                className='flex flex-col min-w-full gap-0.5  px-4'
                 key={`pay-${index}`}
               >
                 <ul className='flex justify-between min-w-full'>
@@ -78,7 +78,7 @@ export default function BookCard({label, mainTitle}) {
                       <h2 className={`${item.type === true ? 'font-semibold' : 'font-normal'} text-sm`}>{item.title}</h2>
                     </li>
                     <li  className={``}>
-                      <h2 className={`${item.type === true ? 'font-semibold' : 'font-normal'} text-sm`}>{item.amount}</h2>
+                      <h2 className={`${item.type === true ? 'font-semibold' : 'font-semibold'} text-sm`}>{item.amount}</h2>
                     </li>
                 </ul>
               </div>

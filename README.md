@@ -11,26 +11,62 @@ Currently, two official plugins are available:
 
 A responsive bus ticket booking web application built with React.js, Tailwind CSS, Node.js, and MongoDB.
 
-## Features
-- Search for buses based on routes and time.
-- User login and secure authentication (JWT).
-- Manage bookings via a user-friendly dashboard.
+# Bus Ticket Booking UI
 
-## Tech Stack
-- Frontend: React.js, Tailwind CSS
-- Backend: Node.js, Express.js
-- Database: MongoDB
+A responsive bus ticket booking web application built with React.js, Tailwind CSS, Node.js, and MongoDB.
+
+## 🚀 Features
+
+✅ **Search & Filter:** Find buses based on **route, date, and time**.  
+✅ **User Authentication:** Secure **login & registration** using **JWT authentication**.  
+✅ **Seat Selection:** Users can choose **preferred seats** while booking.  
+✅ **Dashboard:** View and manage **past & upcoming bookings**.  
+✅ **Email Notifications:** Booking confirmation via email (**Nodemailer**).  
+✅ **Responsive Design:** Fully responsive UI with **Tailwind CSS**.  
+✅ **State Management:** Implemented using **Redux Toolkit**.  
+✅ **Secure API:** Built with **Node.js, Express.js, and MongoDB**.  
+
+## 🛠️ Tech Stack
+
+|------------------------------------------------------------|
+| **Technology**     | **Description**                       |
+|--------------------|---------------------------------------|
+| **Frontend**       | React.js, Redux Toolkit, Tailwind CSS |
+| **Backend**        | Node.js, Express.js                   |
+| **Database**       | MongoDB                               |
+| **Authentication** | JSON Web Tokens (JWT) & bcrypt.js     |
+| **Styling**        | Tailwind CSS, Styled-Components       |
+| **Icons**          | Lucide, React-Icons                   |
+| **API Handling**   | Axios                                 |
+| **Notifications**  | React-Toastify                        |
+|------------------------------------------------------------|
+
+
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/username/bus-ticket-booking-ui.git`
-2. Navigate to the project directory: `cd bus-ticket-booking-ui`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm start`
 
-## Usage
-1. Register/Login to the application.
-2. Search and book bus tickets.
-3. Manage your bookings in the dashboard.
+1. Clone the repository:  
+   `git clone https://github.com/VinKrishanth/bus-ticket-booking-app.git`
 
-## License
-This project is licensed under the MIT License.
+2. Navigate into the project directory:  
+   `cd bus-ticket-booking-app`
+
+3. Install dependencies for both frontend and backend:
+
+   **Frontend:**
+   `cd bus-booking-client`
+   `npm install`
+
+
+   **Backend:**
+   `cd bus-booking-server`
+   `npm install`
+
+
+
+
+This final version provides clear installation instructions, explains the necessary steps to create the `.env` file, and includes a friendly conclusion to the README. This will guide users through the setup process effectively! Let me know if you need any further changes.
+
+
+
+

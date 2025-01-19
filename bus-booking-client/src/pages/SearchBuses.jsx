@@ -9,7 +9,7 @@ export default function SearchBuses() {
   const mobileOpen = useSelector(state => state.theme.isMobileOpen);
 
   return ( 
-    <div className={`max-w-screen mx-auto px-8 sm:px-6 lg:px-8 py-12 ${mobileOpen && 'hidden'} pt-28 space-y-16`}>
+    <div className={`max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12 ${mobileOpen && 'hidden'} pt-28 space-y-16`}>
       <BusBookingCard />
       <BusBookingCard />
       <BusBookingCard />

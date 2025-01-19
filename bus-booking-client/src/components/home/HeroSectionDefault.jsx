@@ -3,6 +3,7 @@ import {  FaMapMarkerAlt, FaBus, FaQuestionCircle, FaExchangeAlt } from 'react-i
 import { useNavigate } from 'react-router-dom';
 import {  useSelector } from 'react-redux';
 import DateInput from '../input/DateInput';
+import { backgroundSource1, backgroundSource2 } from '../../utils/index.js';
 
 export default function HeroSectionDefault() {
     const current = new Date();
@@ -15,7 +16,15 @@ export default function HeroSectionDefault() {
     const navigation = useNavigate();
     const Theme = useSelector(state => state.theme.lightTheme);
     const [errors, setErrors] = useState({});
+    const [backgroundImage, setBackgroundImage] = useState(backgroundSource1);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBackgroundImage(prevImage => prevImage === backgroundSource1 ? backgroundSource2 : backgroundSource1);
+        }, 5000); 
+
+        return () => clearInterval(interval); 
+    }, []);
 
     useEffect(() => {
         const fetchStations = async () => {
@@ -65,27 +74,28 @@ export default function HeroSectionDefault() {
     };
 
     return (
-        <div className={`min-h-screen`}>
-            <div className={`relative h-[50vh] flex items-center justify-center px-2 ${Theme ? 'text-white' : 'text-primary'} `}>
+        <div className={`min-h-screen `}>
+            <div className={`relative h-[60vh] flex items-center justify-center px-2 ${Theme ? 'text-white' : 'text-primary'} `}>
                 <div 
                     className="absolute inset-0 bg-cover bg-center z-0 "
                     style={{
-                        backgroundImage: '',
+                        backgroundImage: `url(${backgroundImage})`,
                         backgroundBlendMode: 'overlay',
+                        backgroundBlendMode: 'linear',
                     }}
                 >
                     <div className={`absolute inset-0 ${Theme ? 'bg-black/50 ' : 'bg-white/50 '}`}></div>
                 </div>
                 
-                <div className="z-10 text-center">
+                <div className="z-10 text-center cursor-pointer">
                     <h1 className="text-5xl md:text-7xl font-bold mb-4">Explore Sri Lanka</h1>
                     <p className="text-xl md:text-2xl">Discover the beauty of the island with our bus services</p>
                 </div>
             </div>
 
-            <div className="max-w-6xl mx-auto px-4 py-8 -mt-24 relative z-20">
-                <div className={` ${Theme ? 'bg-white' : 'bg-gray-800'} rounded-xl shadow-2xl p-6 md:p-8`}>
-                    <h2 className="text-2xl md:text-3xl text-gray-800 mb-6">
+            <div className="max-w-6xl mx-auto px-4 py-8 -mt-24 relative z-20  ">
+                <div className={` ${Theme ? 'bg-white' : 'bg-gray-800'} rounded-md shadow-lg p-6 md:p-8   cursor-pointer `}>
+                    <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center text-primary">
                         Book Your Bus Tickets in Sri Lanka
                     </h2>
                     
@@ -97,7 +107,7 @@ export default function HeroSectionDefault() {
                                 <input
                                     type="text"
                                     placeholder="Enter departure station"
-                                    className={`${errors.departureStation &&  "border-red-500"} w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:outline-none focus:outline-none `}
+                                    className={`${errors.departureStation &&  "ring-red-500 ring-2"} w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:outline-none focus:outline-none ${departureStation !== '' && 'bg-blue-100'} `}
                                     value={departureStation}
                                     onChange={(e) => {
                                         setDepartureStation(e.target.value);
@@ -131,7 +141,7 @@ export default function HeroSectionDefault() {
                                 <input
                                     type="text"
                                     placeholder="Enter arrival station"
-                                    className={`w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:outline-none focus:outline-none ${errors.arrivalStation &&  "border-red-500"}`}
+                                    className={` ${arrivalStation !== '' && 'bg-blue-100'} w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 hover:outline-none focus:outline-none ${errors.arrivalStation &&  "ring-red-500 ring-2"}`}
                                     value={arrivalStation}
                                     onChange={(e) => {
                                         setArrivalStation(e.target.value);

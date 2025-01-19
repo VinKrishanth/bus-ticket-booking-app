@@ -29,7 +29,7 @@ export default function Seats({count, type , index, space}) {
 
   return (
     <ul 
-      className={`flex justify-start items-start p-2 relative   sm:rotate-0 rotate-90 ${space && 'sm:ml-14 sm:mt-0 mt-8'}`}
+      className={`flex justify-start items-start p-2 relative   sm:rotate-0 rotate-90 ${space && 'sm:ml-14 sm:mt-0 mt-8'}  sm:scale-100  scale-125`}
       key={index}
       onClick={()=>handleBookingSeats(count, type)}
     >

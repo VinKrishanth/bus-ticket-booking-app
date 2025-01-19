@@ -91,10 +91,10 @@ function AuthForm({ authMethod }) {
     };
 
     return (
-        <main className="flex-1 flex items-center justify-center p-4 shadow-lg">
-            <div className="rounded-2xl p-8 w-full max-w-md">
+        <main className="flex-1 flex items-center justify-center p-4  ">
+            <div className="rounded-2xl p-8 w-full max-w-md border-2">
                 {authMethod === 'register' ? (
-                    <h1 className="text-3xl font-semibold mb-8 sm:text-left text-center">
+                    <h1 className="text-3xl font-semibold mb-8  text-center">
                         Create your QTechy Account
                     </h1>
                 ) : (
